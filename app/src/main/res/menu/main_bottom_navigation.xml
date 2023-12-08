@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home_page"
+        android:icon="@drawable/ic_home"
+        android:title="首页" />
+
+    <item
+        android:id="@+id/search_page"
+        android:icon="@drawable/ic_home"
+        android:title="搜索" />
+
+    <item
+        android:id="@+id/share_page"
+        android:icon="@drawable/ic_home"
+        android:title="分享" />
+
+    <item
+        android:id="@+id/mine_page"
+        android:icon="@drawable/ic_home"
+        android:title="我的" />
+</menu>
