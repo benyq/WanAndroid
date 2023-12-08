@@ -8,7 +8,9 @@
     <fragment
         android:id="@+id/home_fragment"
         android:name="com.benyq.wanandroid.ui.home.HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+
+    </fragment>
 
     <fragment
         android:id="@+id/project_fragment"
@@ -22,7 +24,12 @@
 
     <fragment
         android:id="@+id/me_fragment"
-        android:name="com.benyq.wanandroid.ui.me.MeFragment"
-        tools:layout="@layout/fragment_me" />
+        android:name="com.benyq.wanandroid.ui.mine.MineFragment"
+        tools:layout="@layout/fragment_mine" />
+
+    <fragment android:id="@+id/article_fragment"
+        android:name="com.benyq.wanandroid.ui.article.ArticleFragment"
+        tools:layout="@layout/fragment_article" />
+
 
 </navigation>

@@ -6,14 +6,14 @@
         android:title="首页" />
 
     <item
-        android:id="@+id/search_page"
+        android:id="@+id/category_page"
         android:icon="@drawable/ic_home"
-        android:title="搜索" />
+        android:title="分类" />
 
     <item
-        android:id="@+id/share_page"
+        android:id="@+id/project_page"
         android:icon="@drawable/ic_home"
-        android:title="分享" />
+        android:title="项目" />
 
     <item
         android:id="@+id/mine_page"

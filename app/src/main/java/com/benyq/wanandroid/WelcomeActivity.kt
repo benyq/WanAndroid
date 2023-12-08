@@ -2,10 +2,10 @@ package com.benyq.wanandroid
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.benyq.wanandroid.base.ui.BaseActivity
 import com.benyq.wanandroid.databinding.ActivityWelcomeBinding
+import com.benyq.wanandroid.ui.main.MainActivity
 
 /**
  * @author benyq
