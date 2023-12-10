@@ -84,5 +84,10 @@ dependencies {
     val navVersion = "2.7.5"
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
-
+    // https://github.com/franmontiel/PersistentCookieJar
+    implementation("com.github.franmontiel:PersistentCookieJar:v1.0.1")
+    // https://github.com/youth5201314/banner
+    implementation("io.github.youth5201314:banner:2.2.2")
+    // https://github.com/coil-kt/coil
+    implementation("io.coil-kt:coil:2.5.0")
 }

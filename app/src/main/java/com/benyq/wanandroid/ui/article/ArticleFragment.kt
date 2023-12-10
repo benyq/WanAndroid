@@ -3,7 +3,7 @@ package com.benyq.wanandroid.ui.article
 import android.os.Bundle
 import android.view.View
 import com.benyq.wanandroid.R
-import com.benyq.wanandroid.base.ui.BaseFragment
+import com.benyq.wanandroid.base.BaseFragment
 import com.benyq.wanandroid.databinding.FragmentArticleBinding
 
 /**

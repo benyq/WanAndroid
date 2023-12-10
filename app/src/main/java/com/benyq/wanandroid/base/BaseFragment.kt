@@ -1,4 +1,4 @@
-package com.benyq.wanandroid.base.ui
+package com.benyq.wanandroid.base
 
 import android.os.Bundle
 import android.util.Log
@@ -17,9 +17,7 @@ import androidx.viewbinding.ViewBinding
  */
 abstract class BaseFragment<VB : ViewBinding>(@LayoutRes val layoutId: Int): Fragment(layoutId) {
 
-    companion object {
-        private val TAG = this::class.java.simpleName
-    }
+    protected val TAG = this::class.java.simpleName
 
     private var _dataBind: VB? = null
     protected val binding: VB get() = checkNotNull(_dataBind) { "初始化binding失败" }
@@ -33,7 +31,7 @@ abstract class BaseFragment<VB : ViewBinding>(@LayoutRes val layoutId: Int): Fra
         super.onViewCreated(view, savedInstanceState)
         Log.d(TAG, "onViewCreated: $this")
         _dataBind = getViewBinding(view)
-        lifecycle.addObserver(object : DefaultLifecycleObserver {
+        viewLifecycleOwner.lifecycle.addObserver(object : DefaultLifecycleObserver {
             override fun onDestroy(owner: LifecycleOwner) {
                 _dataBind = null
             }

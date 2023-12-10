@@ -23,7 +23,7 @@
         tools:layout="@layout/fragment_category" />
 
     <fragment
-        android:id="@+id/me_fragment"
+        android:id="@+id/mine_fragment"
         android:name="com.benyq.wanandroid.ui.mine.MineFragment"
         tools:layout="@layout/fragment_mine" />
 

@@ -1,4 +1,4 @@
-package com.benyq.wanandroid.base.ui
+package com.benyq.wanandroid.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

@@ -95,6 +95,10 @@ fun Fragment.systemBarColor(@ColorInt color: Int) {
     requireActivity().systemBarColor(color)
 }
 
+fun Fragment.statusBarColor(@ColorInt color: Int) {
+    requireActivity().statusBarColor(color)
+}
+
 fun Fragment.fullScreen(fullScreen: Boolean = true) {
     requireActivity().fullScreen(fullScreen)
 }

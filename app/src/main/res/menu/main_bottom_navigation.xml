@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/home_page"
+        android:id="@+id/home_fragment"
         android:icon="@drawable/ic_home"
         android:title="首页" />
 
     <item
-        android:id="@+id/category_page"
-        android:icon="@drawable/ic_home"
+        android:id="@+id/category_fragment"
+        android:icon="@drawable/ic_category"
         android:title="分类" />
 
     <item
-        android:id="@+id/project_page"
-        android:icon="@drawable/ic_home"
+        android:id="@+id/project_fragment"
+        android:icon="@drawable/ic_project"
         android:title="项目" />
 
     <item
-        android:id="@+id/mine_page"
-        android:icon="@drawable/ic_home"
+        android:id="@+id/mine_fragment"
+        android:icon="@drawable/ic_mine"
         android:title="我的" />
 </menu>
