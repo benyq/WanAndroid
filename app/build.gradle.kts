@@ -44,6 +44,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -75,7 +76,7 @@ dependencies {
     //https://github.com/bytedance/CodeLocator
     implementation("com.bytedance.tools.codelocator:codelocator-core:2.0.3")
     implementation("com.google.android.flexbox:flexbox:3.0.0")
-    implementation("io.github.cymchad:BaseRecyclerViewAdapterHelper4:4.1.0")
+    implementation("io.github.cymchad:BaseRecyclerViewAdapterHelper4:4.1.2")
 
     implementation("androidx.core:core-splashscreen:1.0.1")
     //https://github.com/JessYanCoding/AndroidAutoSize
@@ -88,6 +89,8 @@ dependencies {
     implementation("com.github.franmontiel:PersistentCookieJar:v1.0.1")
     // https://github.com/youth5201314/banner
     implementation("io.github.youth5201314:banner:2.2.2")
+    // https://github.com/zhpanvip/BannerViewPager
+    implementation("com.github.zhpanvip:bannerviewpager:3.5.12")
     // https://github.com/coil-kt/coil
     implementation("io.coil-kt:coil:2.5.0")
 }
