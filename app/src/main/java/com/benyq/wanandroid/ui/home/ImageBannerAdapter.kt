@@ -8,7 +8,7 @@ import com.zhpan.bannerview.BaseBannerAdapter
 import com.zhpan.bannerview.BaseViewHolder
 
 
-class ImageBannerAdapter(private val action: () -> Unit): BaseBannerAdapter<BannerModel>() {
+class ImageBannerAdapter(private val action: (BannerModel) -> Unit): BaseBannerAdapter<BannerModel>() {
 
     override fun bindData(
         holder: BaseViewHolder<BannerModel>?,
@@ -20,7 +20,7 @@ class ImageBannerAdapter(private val action: () -> Unit): BaseBannerAdapter<Bann
             val imageView = holder?.findViewById<ImageView>(R.id.image)
             imageView?.load(it.imagePath)
             holder?.itemView?.setOnClickListener {
-                action()
+                action(data)
             }
         }
     }

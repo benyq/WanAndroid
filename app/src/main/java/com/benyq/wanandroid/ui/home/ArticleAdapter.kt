@@ -18,7 +18,7 @@ import com.chad.library.adapter4.viewholder.QuickViewHolder
 import com.zhpan.bannerview.BannerViewPager
 import kotlin.math.log
 
-class ArticleAdapter(private val action: (BannerArticleModel) -> Unit): BaseMultiItemAdapter<BannerArticleModel>() {
+class ArticleAdapter(private val action: (ArticleModel?, BannerModel?) -> Unit): BaseMultiItemAdapter<BannerArticleModel>() {
     class ArticleVH(val viewBinding: ItemHomeArticleBinding) : RecyclerView.ViewHolder(viewBinding.root)
 
     class BannerVH(viewBinding: ItemBannerHolderBinding) : RecyclerView.ViewHolder(viewBinding.root)
@@ -31,7 +31,7 @@ class ArticleAdapter(private val action: (BannerArticleModel) -> Unit): BaseMult
                 Log.d("ArticleAdapter", "onBind: life: ${recyclerView.findViewTreeLifecycleOwner()}")
                 if (bannerView.adapter == null || bannerView.adapter.itemCount != item?.banners?.size) {
                     bannerView.adapter = ImageBannerAdapter {
-                        action(item!!)
+                        action(null, it)
                     }
                     bannerView.create(item?.banners)
                 }
@@ -55,7 +55,7 @@ class ArticleAdapter(private val action: (BannerArticleModel) -> Unit): BaseMult
                     holder.viewBinding.tvTags.text = "${it.superChapterName}/${it.superChapterName}"
                     holder.viewBinding.tvDatetime.text = it.niceDate
                     holder.itemView.setOnClickListener {
-                        action(item)
+                        action(item.articleModel, null)
                     }
                 }
             }

@@ -10,6 +10,13 @@
         android:name="com.benyq.wanandroid.ui.home.HomeFragment"
         tools:layout="@layout/fragment_home" >
 
+        <action
+            android:id="@+id/action_home_to_article"
+            app:destination="@id/article_fragment"
+            app:enterAnim="@anim/x_fragment_enter"
+            app:exitAnim="@anim/x_fragment_exit"
+            app:popEnterAnim="@anim/x_fragment_pop_enter"
+            app:popExitAnim="@anim/x_fragment_pop_exit" />
     </fragment>
 
     <fragment

@@ -26,8 +26,17 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private val viewModel by viewModels<HomeViewModel>(ownerProducer = { this })
     private val articleAdapter by lazy {
-        ArticleAdapter {
-            findNavController().navigate(R.id.article_fragment)
+        ArticleAdapter { article, banner->
+            findNavController().navigate(R.id.action_home_to_article, Bundle().apply {
+                article?.let {
+                    putString("url", it.link)
+                    putString("title", it.title)
+                }
+                banner?.let {
+                    putString("url", it.url)
+                    putString("title", it.title)
+                }
+            })
         }
     }
     private val helper = QuickAdapterHelper.Builder(articleAdapter)
