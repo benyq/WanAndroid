@@ -1,11 +1,17 @@
 package com.benyq.wanandroid.ui.category
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.benyq.wanandroid.R
 import com.benyq.wanandroid.base.BaseFragment
+import com.benyq.wanandroid.base.extensions.collectOnLifecycle
 import com.benyq.wanandroid.databinding.FragmentCategoryBinding
+import com.benyq.wanandroid.ui.article.ArticleListFragmentArgs
+import com.benyq.wanandroid.ui.article.ArticleListFragmentDirections
 
 /**
  *
@@ -13,16 +19,25 @@ import com.benyq.wanandroid.databinding.FragmentCategoryBinding
  * @date 12/8/2023
  *
  */
-class CategoryFragment: BaseFragment<FragmentCategoryBinding>(R.layout.fragment_category) {
-    override fun getViewBinding(view: View) = FragmentCategoryBinding.bind(view)
-
-    override fun onFragmentViewCreated(savedInstanceState: Bundle?) {
-        binding.tv.setOnClickListener {
-            findNavController().navigate(R.id.article_fragment)
+class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment_category) {
+    private val viewModel by viewModels<CategoryViewModel>(ownerProducer = { this })
+    private val categoryTreeAdapter by lazy {
+        CategoryTreeAdapter {
+            val action = CategoryFragmentDirections.actionCategoryToArticles(it.id, it.name)
+            findNavController().navigate(action)
         }
     }
 
-    override fun observe() {
+    override fun getViewBinding(view: View) = FragmentCategoryBinding.bind(view)
 
+    override fun onFragmentViewCreated(savedInstanceState: Bundle?) {
+        binding.rvCategoryTree.adapter = categoryTreeAdapter
+        binding.rvCategoryTree.layoutManager = LinearLayoutManager(requireActivity())
+    }
+
+    override fun observe() {
+        viewModel.categoryTreeFlow.collectOnLifecycle(viewLifecycleOwner) {
+            categoryTreeAdapter.submitList(it)
+        }
     }
 }

@@ -28,8 +28,7 @@ class ArticleAdapter(private val action: (ArticleModel?, BannerModel?) -> Unit):
         addItemType(BANNER_TYPE, object: OnMultiItemAdapterListener<BannerArticleModel, BannerVH> {
             override fun onBind(holder: BannerVH, position: Int, item: BannerArticleModel?) {
                 val bannerView: BannerViewPager<BannerModel> = holder.itemView.findViewById(R.id.banner_view)
-                Log.d("ArticleAdapter", "onBind: life: ${recyclerView.findViewTreeLifecycleOwner()}")
-                if (bannerView.adapter == null || bannerView.adapter.itemCount != item?.banners?.size) {
+                if (bannerView.adapter == null) {
                     bannerView.adapter = ImageBannerAdapter {
                         action(null, it)
                     }
@@ -41,7 +40,6 @@ class ArticleAdapter(private val action: (ArticleModel?, BannerModel?) -> Unit):
             }
 
             override fun onCreate(context: Context, parent: ViewGroup, viewType: Int): BannerVH {
-                Log.d("ArticleAdapter", "onBind: onCreate: ")
                 val viewBinding = ItemBannerHolderBinding.inflate(LayoutInflater.from(context), parent, false)
                 return BannerVH(viewBinding)
             }

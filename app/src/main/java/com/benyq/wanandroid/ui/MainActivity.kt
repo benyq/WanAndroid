@@ -29,6 +29,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             binding.bottomNavigationView.visibleOrGone(showBottomNavigation(destination.id))
         }
+
+        viewModel.queryUserInfo()
     }
 
     private fun showBottomNavigation(@IdRes id: Int): Boolean {

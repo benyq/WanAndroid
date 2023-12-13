@@ -15,17 +15,11 @@ import java.util.concurrent.TimeUnit
 
 class RetrofitCreator {
 
-    fun createRetrofit(context: Context): ApiService {
-        val logInterceptor = HttpLoggingInterceptor(logger = object: HttpLoggingInterceptor.Logger{
-            override fun log(message: String) {
-                Log.d("logInterceptor", message)
-            }
-
-        })
+    fun createRetrofit(): ApiService {
+        val logInterceptor = HttpLoggingInterceptor { message ->
+            Log.d("logInterceptor", message)
+        }
         logInterceptor.level = HttpLoggingInterceptor.Level.BODY
-
-        val cookieJar: ClearableCookieJar =
-            PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(context))
 
         val okhttpClient = OkHttpClient.Builder()
             .addInterceptor(logInterceptor)

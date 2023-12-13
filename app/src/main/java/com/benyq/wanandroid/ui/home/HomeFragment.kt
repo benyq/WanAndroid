@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.benyq.wanandroid.R
 import com.benyq.wanandroid.base.BaseFragment
 import com.benyq.wanandroid.base.extensions.collectOnLifecycle
+import com.benyq.wanandroid.base.extensions.getColor
 import com.benyq.wanandroid.base.extensions.statusBarColor
 import com.benyq.wanandroid.databinding.FragmentHomeBinding
 import com.chad.library.adapter4.QuickAdapterHelper
@@ -59,13 +60,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     override fun getViewBinding(view: View) = FragmentHomeBinding.bind(view)
 
     override fun onFragmentViewCreated(savedInstanceState: Bundle?) {
-        statusBarColor(Color.BLACK)
+        statusBarColor(getColor(R.color.color_background))
         binding.swipeLayout.setOnRefreshListener {
             viewModel.refresh()
         }
         binding.rvArticle.setViewTreeLifecycleOwner(viewLifecycleOwner)
         binding.rvArticle.layoutManager = LinearLayoutManager(requireActivity())
         binding.rvArticle.adapter = helper.adapter
+
+        binding.ivSearch.setOnClickListener {
+
+        }
     }
 
 

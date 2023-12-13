@@ -12,6 +12,7 @@ import android.widget.FrameLayout
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
 import androidx.appcompat.app.AlertDialog
 import androidx.core.graphics.ColorUtils
 import androidx.core.view.WindowCompat
@@ -103,6 +104,8 @@ fun Fragment.fullScreen(fullScreen: Boolean = true) {
     requireActivity().fullScreen(fullScreen)
 }
 
+
+fun Fragment.getColor(@ColorRes id: Int) = requireActivity().getColor(id)
 
 suspend fun Context.alert(title: String, message: String): Boolean =
     suspendCancellableCoroutine { continuation ->

@@ -5,7 +5,7 @@ data class ApiResponse<T>(
     val errorMsg: String,
     val data: T?
 ) {
-    val isSuccess: Boolean get() = errorCode == 0 && data!= null
+    val isSuccess: Boolean get() = errorCode == 0
 
     companion object {
         fun <T> success(data: T): ApiResponse<T> {
