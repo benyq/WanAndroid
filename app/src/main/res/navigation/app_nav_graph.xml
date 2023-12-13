@@ -21,8 +21,16 @@
 
     <fragment
         android:id="@+id/project_fragment"
-        android:name="com.benyq.wanandroid.ui.project.ProjectFragment"
-        tools:layout="@layout/fragment_project" />
+        android:name="com.benyq.wanandroid.ui.project.ProjectTreeFragment"
+        tools:layout="@layout/fragment_project" >
+        <action
+            android:id="@+id/action_project_to_article"
+            app:destination="@id/article_fragment"
+            app:enterAnim="@anim/x_fragment_enter"
+            app:exitAnim="@anim/x_fragment_exit"
+            app:popEnterAnim="@anim/x_fragment_pop_enter"
+            app:popExitAnim="@anim/x_fragment_pop_exit" />
+    </fragment>
 
     <fragment
         android:id="@+id/category_fragment"

@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.benyq.wanandroid.R
 import com.benyq.wanandroid.base.BaseFragment
 import com.benyq.wanandroid.base.extensions.collectOnLifecycle
+import com.benyq.wanandroid.base.extensions.gone
+import com.benyq.wanandroid.base.extensions.visibleOrGone
 import com.benyq.wanandroid.databinding.FragmentArticleListBinding
 import com.benyq.wanandroid.ui.home.ArticleAdapter
 import com.benyq.wanandroid.ui.home.BannerArticleModel
@@ -24,34 +26,39 @@ import com.chad.library.adapter4.loadState.trailing.TrailingLoadStateAdapter
  */
 class ArticleListFragment: BaseFragment<FragmentArticleListBinding>(R.layout.fragment_article_list) {
 
-    private val viewModel by viewModels<ArticleListViewModel>(ownerProducer = { this })
+    companion object {
+        fun newInstance(cid: Int): ArticleListFragment {
+            return  ArticleListFragment().apply {
+                val bundle = Bundle()
+                bundle.putInt("cid", cid)
+                bundle.putString("title", "")
+                arguments = bundle
+            }
+        }
+    }
+
+    private val viewModel by viewModels<ArticleListViewModel>(ownerProducer = { this }, factoryProducer = {ArticleListViewModelFactory(cid)})
     private val args: ArticleListFragmentArgs by navArgs()
     private var cid: Int = 0
-    private val articleAdapter by lazy { ArticleAdapter { article, _ ->
-        findNavController().navigate(R.id.action_article_list_to_article, Bundle().apply {
-            article?.let {
-                putString("url", it.link)
-                putString("title", it.title)
-            }
-        })
-    }}
 
-    private val helper = QuickAdapterHelper.Builder(articleAdapter)
-        // 使用默认样式的尾部"加载更多"
-        .setTrailingLoadStateAdapter(object : TrailingLoadStateAdapter.OnTrailingListener {
-            override fun onLoad() {
-                viewModel.loadMore(cid)
-            }
+    private val helper by lazy {
+        QuickAdapterHelper.Builder(viewModel.articleAdapter)
+            // 使用默认样式的尾部"加载更多"
+            .setTrailingLoadStateAdapter(object : TrailingLoadStateAdapter.OnTrailingListener {
+                override fun onLoad() {
+                    viewModel.loadMore()
+                }
 
-            override fun onFailRetry() {
-                viewModel.loadMore(cid)
-            }
+                override fun onFailRetry() {
+                    viewModel.loadMore()
+                }
 
-            override fun isAllowLoading(): Boolean {
-                // 是否允许触发“加载更多”，通常情况下，下拉刷新的时候不允许进行加载更多
-                return !binding.swipeLayout.isRefreshing
-            }
-        }).build()
+                override fun isAllowLoading(): Boolean {
+                    // 是否允许触发“加载更多”，通常情况下，下拉刷新的时候不允许进行加载更多
+                    return !binding.swipeLayout.isRefreshing
+                }
+            }).build()
+    }
 
 
     override fun getViewBinding(view: View) = FragmentArticleListBinding.bind(view)
@@ -63,9 +70,10 @@ class ArticleListFragment: BaseFragment<FragmentArticleListBinding>(R.layout.fra
         binding.rvArticle.layoutManager = LinearLayoutManager(requireActivity())
 
         binding.tvTitle.text = args.title
+        binding.clHead.visibleOrGone(args.title.isNotEmpty())
 
         binding.swipeLayout.setOnRefreshListener {
-            viewModel.refresh(cid)
+            viewModel.refresh()
         }
 
         binding.ivBack.setOnClickListener {
@@ -77,16 +85,31 @@ class ArticleListFragment: BaseFragment<FragmentArticleListBinding>(R.layout.fra
     override fun observe() {
         viewModel.state.collectOnLifecycle(viewLifecycleOwner) {
             if (it.isFirst) {
-                articleAdapter.submitList(it.articles.map { article-> BannerArticleModel(article, null) })
+                viewModel.articleAdapter.submitList(it.articles.map { article-> BannerArticleModel(article, null) })
             }else {
-                articleAdapter.addAll(it.articles.map { article-> BannerArticleModel(article, null) })
+                viewModel.articleAdapter.addAll(it.articles.map { article-> BannerArticleModel(article, null) })
             }
             helper.trailingLoadState = LoadState.NotLoading(it.isEnd)
             binding.swipeLayout.isRefreshing = false
         }
+        viewModel.event.collectOnLifecycle(viewLifecycleOwner) {
+            when (it) {
+                is ArticleListEvent.NavigateToArticle -> {
+                    it.article?.let { article ->
+                        val actionId = if (args.title.isEmpty()) {
+                            //从 ProjectFragment$ViewPager2$Fragment 跳转到 ArticleFragment
+                            R.id.action_project_to_article
+                        }else {
+                            R.id.action_article_list_to_article
+                        }
+                        findNavController().navigate(actionId, Bundle().apply {
+                            putString("url", article.link)
+                            putString("title", article.title)
+                        })
+                    }
+                }
+            }
+        }
     }
 
-    override fun initData() {
-        viewModel.refresh(cid)
-    }
 }

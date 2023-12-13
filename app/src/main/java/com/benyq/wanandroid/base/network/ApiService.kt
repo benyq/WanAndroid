@@ -7,6 +7,7 @@ import com.benyq.wanandroid.model.CategoryTreeModel
 import com.benyq.wanandroid.model.HotKeyModel
 import com.benyq.wanandroid.model.LoginModel
 import com.benyq.wanandroid.model.PageModel
+import com.benyq.wanandroid.model.ProjectTreeModel
 import com.benyq.wanandroid.model.UserInfoModel
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
@@ -38,6 +39,12 @@ interface ApiService {
 
     @GET("tree/json")
     suspend fun categoryTree(): ApiResponse<List<CategoryTreeModel>>
+
+    @GET("project/tree/json")
+    suspend fun projectTree(): ApiResponse<List<ProjectTreeModel>>
+
+    @GET("project/list/{page}/json")
+    suspend fun projects(@Path("page") page: Int, @Query("cid") cid: Int): ApiResponse<PageModel<ArticleModel>>
 }
 
 
