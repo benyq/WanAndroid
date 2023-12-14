@@ -1,6 +1,5 @@
 package com.benyq.wanandroid.ui.mine
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -32,6 +31,9 @@ class MineFragment : BaseFragment<FragmentMineBinding>(R.layout.fragment_mine) {
         }
         binding.btnLogout.setOnClickListener {
             shareViewModel.logout()
+        }
+        binding.llCollect.setOnClickListener {
+            findNavController().navigate(R.id.action_mine_to_user_collect)
         }
     }
 

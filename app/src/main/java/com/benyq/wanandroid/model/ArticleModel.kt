@@ -29,7 +29,7 @@ data class ArticleModel(
     val shareDate: Long,
     val shareUser: String,
     val superChapterId: Int,
-    val superChapterName: String,
+    val superChapterName: String?,
     val tags: List<Any>,
     val title: String,
     val type: Int,

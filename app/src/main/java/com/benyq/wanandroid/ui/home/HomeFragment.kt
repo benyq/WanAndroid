@@ -1,6 +1,5 @@
 package com.benyq.wanandroid.ui.home
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -27,7 +26,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private val viewModel by viewModels<HomeViewModel>(ownerProducer = { this })
     private val articleAdapter by lazy {
-        ArticleAdapter { article, banner->
+        BannerArticleAdapter { article, banner->
             findNavController().navigate(R.id.action_home_to_article, Bundle().apply {
                 article?.let {
                     putString("url", it.link)

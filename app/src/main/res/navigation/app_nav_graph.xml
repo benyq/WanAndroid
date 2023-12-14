@@ -39,7 +39,7 @@
 
         <action
             android:id="@+id/action_category_to_articles"
-            app:destination="@id/article_list_fragment"
+            app:destination="@id/category_articles_fragment"
             app:enterAnim="@anim/x_fragment_enter"
             app:exitAnim="@anim/x_fragment_exit"
             app:popEnterAnim="@anim/x_fragment_pop_enter"
@@ -58,6 +58,13 @@
             app:exitAnim="@anim/x_fragment_exit"
             app:popEnterAnim="@anim/x_fragment_pop_enter"
             app:popExitAnim="@anim/x_fragment_pop_exit" />
+        <action
+            android:id="@+id/action_mine_to_user_collect"
+            app:destination="@id/user_collect_fragment"
+            app:enterAnim="@anim/x_fragment_enter"
+            app:exitAnim="@anim/x_fragment_exit"
+            app:popEnterAnim="@anim/x_fragment_pop_enter"
+            app:popExitAnim="@anim/x_fragment_pop_exit"/>
     </fragment>
 
     <fragment android:id="@+id/article_fragment"
@@ -69,11 +76,11 @@
         android:name="com.benyq.wanandroid.ui.login.LoginFragment"
         tools:layout="@layout/fragment_login" />
 
-    <fragment android:id="@+id/article_list_fragment"
-        android:name="com.benyq.wanandroid.ui.article.ArticleListFragment"
+    <fragment android:id="@+id/project_articles_fragment"
+        android:name="com.benyq.wanandroid.ui.project.articles.ProjectArticlesFragment"
         tools:layout="@layout/fragment_article_list" >
         <action
-            android:id="@+id/action_article_list_to_article"
+            android:id="@+id/action_project_articles_to_article"
             app:destination="@id/article_fragment"
             app:enterAnim="@anim/x_fragment_enter"
             app:exitAnim="@anim/x_fragment_exit"
@@ -88,5 +95,37 @@
             app:argType="string"/>
     </fragment>
 
+    <fragment android:id="@+id/user_collect_fragment"
+        android:name="com.benyq.wanandroid.ui.mine.collect.UserCollectFragment"
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_user_collect_to_article"
+            app:destination="@id/article_fragment"
+            app:enterAnim="@anim/x_fragment_enter"
+            app:exitAnim="@anim/x_fragment_exit"
+            app:popEnterAnim="@anim/x_fragment_pop_enter"
+            app:popExitAnim="@anim/x_fragment_pop_exit"/>
+    </fragment>
+
+    <fragment android:id="@+id/category_articles_fragment"
+        android:name="com.benyq.wanandroid.ui.category.articles.CategoryArticlesFragment"
+        tools:layout="@layout/fragment_list" >
+
+        <action
+            android:id="@+id/action_category_articles_to_article"
+            app:destination="@id/article_fragment"
+            app:enterAnim="@anim/x_fragment_enter"
+            app:exitAnim="@anim/x_fragment_exit"
+            app:popEnterAnim="@anim/x_fragment_pop_enter"
+            app:popExitAnim="@anim/x_fragment_pop_exit"/>
+
+        <argument
+            android:name="cid"
+            app:argType="integer"/>
+        <argument
+            android:name="title"
+            app:argType="string"/>
+
+    </fragment>
 
 </navigation>

@@ -11,13 +11,14 @@
         android:layout_height="50dp"
         android:gravity="center_vertical"
         android:paddingHorizontal="5dp"
+        android:background="@color/color_background"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/iv_back"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:padding="2dp"
+            android:padding="5dp"
             android:src="@drawable/ic_arrow_back"/>
 
         <TextView
@@ -38,7 +39,7 @@
             android:id="@+id/iv_action"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:padding="2dp"
+            android:padding="5dp"
             android:src="@drawable/ic_share"/>
 
     </LinearLayout>

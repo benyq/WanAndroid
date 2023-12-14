@@ -1,11 +1,9 @@
 package com.benyq.wanandroid.ui.project
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.benyq.wanandroid.model.ProjectTreeModel
-import com.benyq.wanandroid.ui.article.ArticleListFragment
+import com.benyq.wanandroid.ui.project.articles.ProjectArticlesFragment
 
 /**
  *
@@ -21,7 +19,7 @@ class ProjectTreeAdapter(
 
     override fun createFragment(position: Int): Fragment {
         val item = data[position]
-        return ArticleListFragment.newInstance(item.id)
+        return ProjectArticlesFragment.newInstance(item.id)
     }
 
 }

@@ -45,6 +45,9 @@ interface ApiService {
 
     @GET("project/list/{page}/json")
     suspend fun projects(@Path("page") page: Int, @Query("cid") cid: Int): ApiResponse<PageModel<ArticleModel>>
+
+    @GET("/lg/collect/list/{page}/json")
+    suspend fun getCollectedArticles(@Path("page") page: Int): ApiResponse<PageModel<ArticleModel>>
 }
 
 

@@ -1,13 +1,14 @@
-package com.benyq.wanandroid.ui.article
+package com.benyq.wanandroid.ui.project.articles
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.benyq.wanandroid.base.BaseViewModel
 import com.benyq.wanandroid.base.network.apiService
+import com.benyq.wanandroid.model.ArticleListState
 import com.benyq.wanandroid.model.ArticleModel
 import com.benyq.wanandroid.ui.DataState
-import com.benyq.wanandroid.ui.home.ArticleAdapter
+import com.benyq.wanandroid.ui.home.BannerArticleAdapter
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.launchIn
@@ -21,35 +22,29 @@ import kotlinx.coroutines.launch
  *
  */
 
-data class ArticleListState(
-    val isFirst: Boolean = true,
-    val isEnd: Boolean = false,
-    val articles: List<ArticleModel>,
-)
-
-sealed class ArticleListEvent {
-    data class NavigateToArticle(val article: ArticleModel?) : ArticleListEvent()
+sealed class ProjectEvent {
+    data class NavigateToArticle(val article: ArticleModel?) : ProjectEvent()
 }
 
-class ArticleListViewModelFactory(private val cid: Int) : ViewModelProvider.NewInstanceFactory() {
+class ProjectArticlesViewModelFactory(private val cid: Int) : ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return modelClass.cast(ArticleListViewModel(cid))!!
+        return modelClass.cast(ProjectArticlesViewModel(cid))!!
     }
 }
 
-class ArticleListViewModel(private val cid: Int) : BaseViewModel() {
+class ProjectArticlesViewModel(private val cid: Int) : BaseViewModel() {
     private val _state = MutableSharedFlow<ArticleListState>()
     val state: SharedFlow<ArticleListState> = _state
 
-    private val _event = MutableSharedFlow<ArticleListEvent>()
-    val event: SharedFlow<ArticleListEvent> = _event
+    private val _event = MutableSharedFlow<ProjectEvent>()
+    val event: SharedFlow<ProjectEvent> = _event
 
     private var _pageIndex = 0
 
     val articleAdapter by lazy {
-        ArticleAdapter { article, _ ->
+        ProjectArticlesAdapter { article->
             viewModelScope.launch {
-                _event.emit(ArticleListEvent.NavigateToArticle(article))
+                _event.emit(ProjectEvent.NavigateToArticle(article))
             }
         }
     }
@@ -60,7 +55,7 @@ class ArticleListViewModel(private val cid: Int) : BaseViewModel() {
 
     private fun queryArticles() {
         flowResponse {
-            apiService.articles(_pageIndex, cid)
+            apiService.projects(_pageIndex, cid)
         }.onEach {
             if (it is DataState.Success) {
                 _state.emit(

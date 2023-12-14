@@ -33,6 +33,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_title"
             tools:text="学习-自定义View" />

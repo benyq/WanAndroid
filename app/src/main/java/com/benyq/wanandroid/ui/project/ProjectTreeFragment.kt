@@ -2,16 +2,12 @@ package com.benyq.wanandroid.ui.project
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.benyq.wanandroid.R
 import com.benyq.wanandroid.base.BaseFragment
 import com.benyq.wanandroid.base.extensions.collectOnLifecycle
 import com.benyq.wanandroid.base.extensions.overScrollNever
 import com.benyq.wanandroid.databinding.FragmentProjectBinding
-import com.benyq.wanandroid.model.ProjectTreeModel
-import com.benyq.wanandroid.ui.article.ArticleListFragment
 import com.google.android.material.tabs.TabLayoutMediator
 
 /**

@@ -2,7 +2,6 @@ package com.benyq.wanandroid.ui.home
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.findViewTreeLifecycleOwner
@@ -13,12 +12,9 @@ import com.benyq.wanandroid.databinding.ItemHomeArticleBinding
 import com.benyq.wanandroid.model.ArticleModel
 import com.benyq.wanandroid.model.BannerModel
 import com.chad.library.adapter4.BaseMultiItemAdapter
-import com.chad.library.adapter4.BaseQuickAdapter
-import com.chad.library.adapter4.viewholder.QuickViewHolder
 import com.zhpan.bannerview.BannerViewPager
-import kotlin.math.log
 
-class ArticleAdapter(private val action: (ArticleModel?, BannerModel?) -> Unit): BaseMultiItemAdapter<BannerArticleModel>() {
+class BannerArticleAdapter(private val action: (ArticleModel?, BannerModel?) -> Unit): BaseMultiItemAdapter<BannerArticleModel>() {
     class ArticleVH(val viewBinding: ItemHomeArticleBinding) : RecyclerView.ViewHolder(viewBinding.root)
 
     class BannerVH(viewBinding: ItemBannerHolderBinding) : RecyclerView.ViewHolder(viewBinding.root)
@@ -50,7 +46,7 @@ class ArticleAdapter(private val action: (ArticleModel?, BannerModel?) -> Unit):
                 item?.articleModel?.let {
                     holder.viewBinding.tvAuthor.text = it.author.ifEmpty { it.shareUser }
                     holder.viewBinding.tvTitle.text = it.title
-                    holder.viewBinding.tvTags.text = "${it.superChapterName}/${it.superChapterName}"
+                    holder.viewBinding.tvTags.text = "${it.superChapterName}/${it.chapterName}"
                     holder.viewBinding.tvDatetime.text = it.niceDate
                     holder.itemView.setOnClickListener {
                         action(item.articleModel, null)

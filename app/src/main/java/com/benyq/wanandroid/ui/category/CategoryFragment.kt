@@ -1,7 +1,6 @@
 package com.benyq.wanandroid.ui.category
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -10,8 +9,6 @@ import com.benyq.wanandroid.R
 import com.benyq.wanandroid.base.BaseFragment
 import com.benyq.wanandroid.base.extensions.collectOnLifecycle
 import com.benyq.wanandroid.databinding.FragmentCategoryBinding
-import com.benyq.wanandroid.ui.article.ArticleListFragmentArgs
-import com.benyq.wanandroid.ui.article.ArticleListFragmentDirections
 
 /**
  *
