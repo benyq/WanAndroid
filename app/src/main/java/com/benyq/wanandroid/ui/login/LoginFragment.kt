@@ -24,7 +24,7 @@ import com.benyq.wanandroid.ui.ShareViewModel
  */
 class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login) {
 
-    private val viewModel by viewModels<LoginViewModel>(ownerProducer = { this })
+    private val viewModel by viewModels<LoginViewModel>()
     private val shareViewModel by viewModels<ShareViewModel>(ownerProducer = { requireActivity() })
 
     override fun getViewBinding(view: View) = FragmentLoginBinding.bind(view)

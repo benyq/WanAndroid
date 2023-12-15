@@ -48,6 +48,10 @@ interface ApiService {
 
     @GET("/lg/collect/list/{page}/json")
     suspend fun getCollectedArticles(@Path("page") page: Int): ApiResponse<PageModel<ArticleModel>>
+
+    @POST("article/query/{page}/json")
+    @FormUrlEncoded
+    suspend fun search(@Path("page") page: Int, @Field("k") k: String): ApiResponse<PageModel<ArticleModel>>
 }
 
 

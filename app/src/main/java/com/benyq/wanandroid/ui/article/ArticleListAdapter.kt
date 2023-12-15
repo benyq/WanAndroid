@@ -25,7 +25,7 @@ class ArticleListAdapter(private val action: (ArticleModel)->Unit) : BaseQuickAd
         item?.let {
             holder.viewBinding.tvAuthor.text = it.author.ifEmpty { it.shareUser }
             holder.viewBinding.tvTitle.text = it.title
-            holder.viewBinding.tvTags.text = if (it.superChapterName.isNullOrEmpty()) it.chapterName else "${it.superChapterName}/${it.superChapterName}"
+            holder.viewBinding.tvTags.text = if (it.superChapterName.isNullOrEmpty()) it.chapterName else "${it.superChapterName}/${it.chapterName}"
             holder.viewBinding.tvDatetime.text = it.niceDate
             holder.itemView.setOnClickListener {
                 action(item)

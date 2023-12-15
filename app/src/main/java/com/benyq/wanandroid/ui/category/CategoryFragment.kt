@@ -17,7 +17,7 @@ import com.benyq.wanandroid.databinding.FragmentCategoryBinding
  *
  */
 class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment_category) {
-    private val viewModel by viewModels<CategoryViewModel>(ownerProducer = { this })
+    private val viewModel by viewModels<CategoryViewModel>()
     private val categoryTreeAdapter by lazy {
         CategoryTreeAdapter {
             val action = CategoryFragmentDirections.actionCategoryToArticles(it.id, it.name)

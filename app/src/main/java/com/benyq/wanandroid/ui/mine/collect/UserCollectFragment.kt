@@ -18,7 +18,7 @@ import com.chad.library.adapter4.loadState.LoadState
  */
 class UserCollectFragment: BaseListFragment() {
 
-    private val viewModel by viewModels<UserCollectViewModel>(ownerProducer = {this})
+    private val viewModel by viewModels<UserCollectViewModel>()
     private val adapter by lazy { ArticleListAdapter {
         findNavController().navigate(R.id.action_user_collect_to_article, Bundle().apply {
             putString("url", it.link)

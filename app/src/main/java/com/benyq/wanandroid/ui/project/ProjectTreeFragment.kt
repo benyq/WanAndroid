@@ -18,7 +18,7 @@ import com.google.android.material.tabs.TabLayoutMediator
  */
 class ProjectTreeFragment : BaseFragment<FragmentProjectBinding>(R.layout.fragment_project) {
 
-    private val viewModel by viewModels<ProjectTreeViewModel>(ownerProducer = { this })
+    private val viewModel by viewModels<ProjectTreeViewModel>()
     private val vpAdapter by lazy { ProjectTreeAdapter(mutableListOf(), this) }
     override fun getViewBinding(view: View) = FragmentProjectBinding.bind(view)
 

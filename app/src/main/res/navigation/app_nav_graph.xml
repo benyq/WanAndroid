@@ -17,6 +17,15 @@
             app:exitAnim="@anim/x_fragment_exit"
             app:popEnterAnim="@anim/x_fragment_pop_enter"
             app:popExitAnim="@anim/x_fragment_pop_exit" />
+
+        <action
+            android:id="@+id/action_home_to_search"
+            app:destination="@id/search_fragment"
+            app:enterAnim="@anim/search_fragment_enter"
+            app:exitAnim="@anim/search_fragment_exit"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
     </fragment>
 
     <fragment
@@ -125,6 +134,20 @@
         <argument
             android:name="title"
             app:argType="string"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/search_fragment"
+        android:name="com.benyq.wanandroid.ui.search.SearchFragment"
+        tools:layout="@layout/fragment_search" >
+
+        <action
+            android:id="@+id/action_search_to_article"
+            app:destination="@id/article_fragment"
+            app:enterAnim="@anim/x_fragment_enter"
+            app:exitAnim="@anim/x_fragment_exit"
+            app:popEnterAnim="@anim/x_fragment_pop_enter"
+            app:popExitAnim="@anim/x_fragment_pop_exit"/>
 
     </fragment>
 

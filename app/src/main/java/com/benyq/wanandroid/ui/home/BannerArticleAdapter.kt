@@ -15,7 +15,7 @@ import com.chad.library.adapter4.BaseMultiItemAdapter
 import com.zhpan.bannerview.BannerViewPager
 
 class BannerArticleAdapter(private val action: (ArticleModel?, BannerModel?) -> Unit): BaseMultiItemAdapter<BannerArticleModel>() {
-    class ArticleVH(val viewBinding: ItemHomeArticleBinding) : RecyclerView.ViewHolder(viewBinding.root)
+   private class ArticleVH(val viewBinding: ItemHomeArticleBinding) : RecyclerView.ViewHolder(viewBinding.root)
 
     class BannerVH(viewBinding: ItemBannerHolderBinding) : RecyclerView.ViewHolder(viewBinding.root)
 

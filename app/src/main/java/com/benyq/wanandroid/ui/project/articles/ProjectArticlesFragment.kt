@@ -41,7 +41,6 @@ class ProjectArticlesFragment : BaseListFragment() {
     }
 
     private val viewModel by viewModels<ProjectArticlesViewModel>(
-        ownerProducer = { this },
         factoryProducer = { ProjectArticlesViewModelFactory(cid) })
     private val args: ProjectArticlesFragmentArgs by navArgs()
     private var cid: Int = 0

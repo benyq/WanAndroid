@@ -24,7 +24,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
  *
  */
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
-    private val viewModel by viewModels<HomeViewModel>(ownerProducer = { this })
+    private val viewModel by viewModels<HomeViewModel>()
     private val articleAdapter by lazy {
         BannerArticleAdapter { article, banner->
             findNavController().navigate(R.id.action_home_to_article, Bundle().apply {
@@ -68,7 +68,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         binding.rvArticle.adapter = helper.adapter
 
         binding.ivSearch.setOnClickListener {
-
+            findNavController().navigate(R.id.action_home_to_search)
         }
     }
 
