@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android"
-    android:duration="150">
+    android:duration="200">
 
     <alpha
         android:fromAlpha="0"
@@ -12,5 +12,5 @@
         android:fromYScale="0.5"
         android:toYScale="1.0"
         android:pivotX="50%p"
-        android:pivotY="10%p"/>
+        android:pivotY="20%p"/>
 </set>
