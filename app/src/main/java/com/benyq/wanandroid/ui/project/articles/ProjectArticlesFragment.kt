@@ -17,6 +17,7 @@ import com.benyq.wanandroid.base.extensions.dp
 import com.benyq.wanandroid.base.extensions.gone
 import com.benyq.wanandroid.ui.BaseListFragment
 import com.chad.library.adapter4.loadState.LoadState
+import java.lang.Exception
 
 /**
  *
@@ -87,6 +88,13 @@ class ProjectArticlesFragment : BaseListFragment() {
     }
 
     override fun provideAdapter() = viewModel.articleAdapter
+    override fun isAllowLoading(): Boolean {
+        return try {
+            !binding.swipeLayout.isRefreshing
+        }catch (e: Exception) {
+            true
+        }
+    }
 
     override fun observe() {
         viewModel.state.collectOnLifecycle(viewLifecycleOwner) {

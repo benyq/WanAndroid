@@ -65,4 +65,8 @@ class UserCollectFragment: BaseListFragment() {
     }
 
     override fun provideAdapter() = adapter
+
+    override fun isAllowLoading(): Boolean {
+        return !binding.swipeLayout.isRefreshing
+    }
 }

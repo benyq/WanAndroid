@@ -32,7 +32,7 @@ abstract class BaseListFragment: BaseFragment<FragmentListBinding>(R.layout.frag
 
                 override fun isAllowLoading(): Boolean {
                     // 是否允许触发“加载更多”，通常情况下，下拉刷新的时候不允许进行加载更多
-                    return !binding.swipeLayout.isRefreshing
+                    return this@BaseListFragment.isAllowLoading()
                 }
             }).build()
     }
@@ -55,5 +55,7 @@ abstract class BaseListFragment: BaseFragment<FragmentListBinding>(R.layout.frag
     abstract fun loadMore()
 
     abstract fun provideAdapter(): BaseQuickAdapter<*, *>
+
+    abstract fun isAllowLoading(): Boolean
 
 }
