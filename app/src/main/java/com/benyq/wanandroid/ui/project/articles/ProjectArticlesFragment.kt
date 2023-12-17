@@ -1,12 +1,10 @@
 package com.benyq.wanandroid.ui.project.articles
 
-import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.setPadding
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -16,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.benyq.wanandroid.R
 import com.benyq.wanandroid.base.extensions.collectOnLifecycle
 import com.benyq.wanandroid.base.extensions.dp
-import com.benyq.wanandroid.base.extensions.getColor
 import com.benyq.wanandroid.base.extensions.gone
 import com.benyq.wanandroid.ui.BaseListFragment
 import com.chad.library.adapter4.loadState.LoadState
@@ -40,14 +37,15 @@ class ProjectArticlesFragment : BaseListFragment() {
         }
     }
 
-    private val viewModel by viewModels<ProjectArticlesViewModel>(
-        factoryProducer = { ProjectArticlesViewModelFactory(cid) })
     private val args: ProjectArticlesFragmentArgs by navArgs()
     private var cid: Int = 0
 
+    private val viewModel by viewModels<ProjectArticlesViewModel>(
+        factoryProducer = { ProjectArticlesViewModelFactory(cid) })
+
     override fun onFragmentViewCreated(savedInstanceState: Bundle?) {
-        super.onFragmentViewCreated(savedInstanceState)
         cid = args.cid
+        super.onFragmentViewCreated(savedInstanceState)
 
         binding.tvTitle.text = args.title
         binding.clHead.gone()
