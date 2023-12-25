@@ -1,6 +1,8 @@
 package com.benyq.wanandroid
 
 import android.app.Application
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import com.benyq.wanandroid.base.extensions.appCtx
 import com.benyq.wanandroid.webview.WebViewManager
 

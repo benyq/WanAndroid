@@ -130,9 +130,9 @@ suspend fun Context.alert(title: String, message: String): Boolean =
 
 
 private val mainHandler = Handler(Looper.getMainLooper())
-fun Context.showToast(message: String) {
+fun showToast(message: String) {
     fun toast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(appCtx, message, Toast.LENGTH_SHORT).show()
     }
     if (mainHandler.looper.isCurrentThread) {
         toast(message)

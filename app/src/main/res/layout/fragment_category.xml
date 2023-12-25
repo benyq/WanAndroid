@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="分类"
+            android:text="@string/category_page"
             android:textSize="20sp"
             android:textColor="@color/black"
             android:gravity="center"

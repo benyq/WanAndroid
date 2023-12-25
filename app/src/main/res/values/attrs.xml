@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="SettingCellView">
+        <attr name="cell_title" format="string" />
+        <attr name="cell_content" format="string" />
+        <attr name="cell_icon" format="reference|color" />
+    </declare-styleable>
+
+</resources>

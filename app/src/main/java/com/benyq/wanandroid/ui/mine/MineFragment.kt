@@ -11,6 +11,7 @@ import com.benyq.wanandroid.base.extensions.getColor
 import com.benyq.wanandroid.base.extensions.statusBarColor
 import com.benyq.wanandroid.databinding.FragmentMineBinding
 import com.benyq.wanandroid.ui.ShareViewModel
+import com.benyq.wanandroid.ui.mine.language.LanguageViewModel
 
 /**
  *
@@ -21,6 +22,7 @@ import com.benyq.wanandroid.ui.ShareViewModel
 class MineFragment : BaseFragment<FragmentMineBinding>(R.layout.fragment_mine) {
 
     private val shareViewModel by viewModels<ShareViewModel>(ownerProducer = { requireActivity() })
+    private val languageViewModel by viewModels<LanguageViewModel>(ownerProducer = { requireActivity() })
 
     override fun getViewBinding(view: View) = FragmentMineBinding.bind(view)
 
@@ -35,6 +37,10 @@ class MineFragment : BaseFragment<FragmentMineBinding>(R.layout.fragment_mine) {
         binding.llCollect.setOnClickListener {
             findNavController().navigate(R.id.action_mine_to_user_collect)
         }
+        binding.scLanguage.setOnClickListener {
+            findNavController().navigate(R.id.action_mine_to_language)
+        }
+        binding.scLanguage.setContent(languageViewModel.currentLanguage?.name)
     }
 
     override fun observe() {

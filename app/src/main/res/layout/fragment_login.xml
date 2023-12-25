@@ -112,7 +112,7 @@
                 android:layout_marginTop="25dp"
                 android:backgroundTint="@drawable/login_button_style"
                 android:enabled="false"
-                android:text="登录" />
+                android:text="@string/login" />
 
         </LinearLayout>
 

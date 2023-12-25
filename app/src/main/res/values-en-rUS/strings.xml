@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">WanAndroid</string>
+    <string name="home_page">Home</string>
+    <string name="category_page">Category</string>
+    <string name="project_page">Project</string>
+    <string name="mine_page">Mine</string>
+    <string name="login">Login</string>
+    <string name="logout">Log out</string>
+    <string name="search_hint">Search keywords separated by spaces</string>
+    <string name="search_history">Search History</string>
+    <string name="search_hotkey">Hot Key</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+    <string name="save">Save</string>
+    <string name="language">Language</string>
+    <string name="collect">Collect</string>
+    <string name="coin">Coin</string>
+    <string name="rank">Rank</string>
+    <string name="language_not_selected">Please select a language</string>
+    <string name="language_change_confirm">Are you sure you want to change the language?</string>
+</resources>

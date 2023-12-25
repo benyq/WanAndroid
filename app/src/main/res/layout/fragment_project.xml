@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="项目"
+            android:text="@string/project_page"
             android:textSize="20sp"
             android:textColor="@color/black"
             android:gravity="center"
