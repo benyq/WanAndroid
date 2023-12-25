@@ -61,6 +61,11 @@ fun Activity.systemBarColor(@ColorInt color: Int) {
     insetsController.isAppearanceLightStatusBars = luminance > 0.5
 }
 
+fun Activity.isAppearanceLightStatusBars(isLight: Boolean) {
+    val insetsController = WindowCompat.getInsetsController(window, window.decorView)
+    insetsController.isAppearanceLightStatusBars = isLight
+}
+
 fun Activity.statusBarColor(@ColorInt color: Int) {
     val insetsController = WindowCompat.getInsetsController(window, window.decorView)
     window.statusBarColor = color
@@ -97,7 +102,7 @@ fun Fragment.systemBarColor(@ColorInt color: Int) {
 }
 
 fun Fragment.statusBarColor(@ColorInt color: Int) {
-    requireActivity().statusBarColor(color)
+//    requireActivity().statusBarColor(color)
 }
 
 fun Fragment.fullScreen(fullScreen: Boolean = true) {

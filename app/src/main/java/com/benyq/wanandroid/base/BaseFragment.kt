@@ -3,7 +3,11 @@ package com.benyq.wanandroid.base
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -36,6 +40,9 @@ abstract class BaseFragment<VB : ViewBinding>(@LayoutRes val layoutId: Int): Fra
                 _dataBind = null
             }
         })
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, windowInsets ->
+            onApplyWindow(view, windowInsets)
+        }
         onFragmentViewCreated(savedInstanceState)
         observe()
         initData()
@@ -55,4 +62,11 @@ abstract class BaseFragment<VB : ViewBinding>(@LayoutRes val layoutId: Int): Fra
     abstract fun onFragmentViewCreated(savedInstanceState: Bundle?)
     abstract fun observe()
     open fun initData(){}
+    open fun onApplyWindow(view: View, windowInsets: WindowInsetsCompat): WindowInsetsCompat{
+        val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+        view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            topMargin = insets.top
+        }
+        return WindowInsetsCompat.CONSUMED
+    }
 }

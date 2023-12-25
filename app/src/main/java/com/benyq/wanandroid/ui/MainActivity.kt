@@ -1,12 +1,20 @@
 package com.benyq.wanandroid.ui
 
+import android.graphics.Color
+import android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+import android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+import android.view.WindowInsets
 import androidx.activity.viewModels
 import androidx.annotation.IdRes
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.benyq.wanandroid.R
 import com.benyq.wanandroid.base.extensions.visibleOrGone
 import com.benyq.wanandroid.base.BaseActivity
+import com.benyq.wanandroid.base.extensions.fullScreen
+import com.benyq.wanandroid.base.extensions.isAppearanceLightStatusBars
 import com.benyq.wanandroid.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -22,6 +30,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun getViewBinding() = ActivityMainBinding.inflate(layoutInflater)
     override fun onActivityCreated() {
+        window.statusBarColor = Color.TRANSPARENT
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        isAppearanceLightStatusBars(true)
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController

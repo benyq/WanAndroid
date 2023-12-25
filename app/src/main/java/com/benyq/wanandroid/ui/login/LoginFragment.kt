@@ -3,15 +3,18 @@ package com.benyq.wanandroid.ui.login
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup.MarginLayoutParams
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.benyq.wanandroid.R
 import com.benyq.wanandroid.base.BaseFragment
 import com.benyq.wanandroid.base.extensions.collectOnLifecycle
+import com.benyq.wanandroid.base.extensions.dp
 import com.benyq.wanandroid.base.extensions.hideLoading
 import com.benyq.wanandroid.base.extensions.showLoading
-import com.benyq.wanandroid.base.extensions.statusBarColor
 import com.benyq.wanandroid.databinding.FragmentLoginBinding
 import com.benyq.wanandroid.ui.DataState
 import com.benyq.wanandroid.ui.ShareViewModel
@@ -30,7 +33,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
     override fun getViewBinding(view: View) = FragmentLoginBinding.bind(view)
 
     override fun onFragmentViewCreated(savedInstanceState: Bundle?) {
-        statusBarColor(requireActivity().getColor(R.color.teal_700))
         binding.ivBack.setOnClickListener {
             findNavController().navigateUp()
         }
@@ -70,6 +72,17 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
     }
 
     override fun observe() {
+    }
+
+    override fun onApplyWindow(view: View, windowInsets: WindowInsetsCompat): WindowInsetsCompat {
+        val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+        binding.flHead.updateLayoutParams<MarginLayoutParams> {
+            height = 240.dp + insets.top
+        }
+        binding.ivBack.updateLayoutParams<MarginLayoutParams> {
+            topMargin = 15.dp + insets.top
+        }
+        return WindowInsetsCompat.CONSUMED
     }
 
     private fun onTextChanged() {

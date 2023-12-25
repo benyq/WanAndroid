@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.benyq.wanandroid.base.BaseActivity
+import com.benyq.wanandroid.base.extensions.isAppearanceLightStatusBars
 import com.benyq.wanandroid.databinding.ActivityWelcomeBinding
 import com.benyq.wanandroid.ui.MainActivity
 
@@ -20,6 +21,7 @@ class WelcomeActivity : BaseActivity<ActivityWelcomeBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
+        isAppearanceLightStatusBars(true)
         splashScreen.setKeepOnScreenCondition { true }
         startActivity(Intent(this, MainActivity::class.java))
         finish()
