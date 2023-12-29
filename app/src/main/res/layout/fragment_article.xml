@@ -36,7 +36,7 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageView
-            android:id="@+id/iv_action"
+            android:id="@+id/iv_share"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:padding="5dp"

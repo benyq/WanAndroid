@@ -1,5 +1,6 @@
 package com.benyq.wanandroid.ui.article
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
@@ -10,6 +11,7 @@ import com.benyq.wanandroid.base.BaseFragment
 import com.benyq.wanandroid.databinding.FragmentArticleBinding
 import com.benyq.wanandroid.webview.RobustWebView
 import com.benyq.wanandroid.webview.WebViewManager
+
 
 /**
  *
@@ -64,6 +66,13 @@ class ArticleFragment: BaseFragment<FragmentArticleBinding>(R.layout.fragment_ar
         }
         binding.ivBack.setOnClickListener {
             findNavController().navigateUp()
+        }
+        binding.ivShare.setOnClickListener {
+            val sendIntent = Intent()
+            sendIntent.setAction(Intent.ACTION_SEND)
+            sendIntent.putExtra(Intent.EXTRA_TEXT, arguments?.getString("url")?: "")
+            sendIntent.setType("text/plain")
+            startActivity(sendIntent)
         }
     }
 

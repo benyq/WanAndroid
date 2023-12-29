@@ -102,7 +102,7 @@ fun Fragment.systemBarColor(@ColorInt color: Int) {
 }
 
 fun Fragment.statusBarColor(@ColorInt color: Int) {
-//    requireActivity().statusBarColor(color)
+    requireActivity().statusBarColor(color)
 }
 
 fun Fragment.fullScreen(fullScreen: Boolean = true) {

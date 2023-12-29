@@ -8,7 +8,6 @@ import com.benyq.wanandroid.R
 import com.benyq.wanandroid.base.BaseFragment
 import com.benyq.wanandroid.base.extensions.collectOnLifecycle
 import com.benyq.wanandroid.base.extensions.getColor
-import com.benyq.wanandroid.base.extensions.statusBarColor
 import com.benyq.wanandroid.databinding.FragmentMineBinding
 import com.benyq.wanandroid.ui.ShareViewModel
 import com.benyq.wanandroid.ui.mine.language.LanguageViewModel
@@ -27,7 +26,6 @@ class MineFragment : BaseFragment<FragmentMineBinding>(R.layout.fragment_mine) {
     override fun getViewBinding(view: View) = FragmentMineBinding.bind(view)
 
     override fun onFragmentViewCreated(savedInstanceState: Bundle?) {
-        statusBarColor(getColor(R.color.color_background))
         binding.cvUser.setOnClickListener {
             findNavController().navigate(R.id.action_mine_to_login)
         }
